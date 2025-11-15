@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Desert Signal IT • Fix it. Explain it. Empower you.</title>
+  <meta name="description" content="Desert Signal IT is a Tucson-based IT startup that fixes your tech, explains what happened, and leaves you with a clear, simple Tech Clarity Report after every visit." />
+  <meta name="theme-color" content="#111827" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050816;          /* desert night */
+      --bg-alt: #0b1220;
+      --card: #111827;
+      --ink: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #37b6b1;      /* turquoise */
+      --accent-soft: rgba(55,182,177,0.16);
+      --sand: #cbaa7e;
+      --cactus: #5c7f68;
+      --ring: rgba(15,23,42,0.7);
+      --shadow: 0 22px 55px rgba(0,0,0,0.65);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+      color: var(--ink);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(5,8,22,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(148,163,184,0.18);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    nav a {
+      margin-left: 18px;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--ink);
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #022c22;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: var(--shadow);
+      border: none;
+    }
+
+    .cta.secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid rgba(148,163,184,0.5);
+      box-shadow: none;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 60px 0 40px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(55,182,177,0.12);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero h2 {
+      font-size: 40px;
+      line-height: 1.05;
+      margin: 0 0 12px;
+    }
+
+    .hero h2 span {
+      color: var(--accent);
+    }
+
+    .hero .lead {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+      align-items: center;
+    }
+
+    .hero-mini {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, #111827 0, #020617 60%);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid rgba(55,65,81,0.7);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      color: var(--ink);
+    }
+
+    .hero-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .kpi-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .kpi {
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px dashed rgba(148,163,184,0.55);
+      font-size: 13px;
+    }
+
+    .kpi strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    /* Sections */
+    section {
+      padding: 42px 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin: 0 0 6px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #020617, #111827);
+      border-radius: var(--radius);
+      padding: 16px;
+      border: 1px solid rgba(31,41,55,0.8);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 4px 0 6px;
+      font-size: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(203,170,126,0.18);
+      color: #fef9c3;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 6px 0 0;
+    }
+
+    /* Unique differentiator strip */
+    .strip {
+      border-radius: var(--radius);
+      background: linear-gradient(90deg,#111827,#020617);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 16px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .strip-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+    }
+
+    .strip-main {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .strip-main strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .strip-main span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Timeline */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .step {
+      background: #020617;
+      border-radius: var(--radius);
+      border: 1px dashed rgba(148,163,184,0.5);
+      padding: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .step span {
+      display: inline-flex;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .step strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    /* Pricing */
+    .pricing-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .price-card {
+      background: #020617;
+      border-radius: var(--radius);
+      border: 1px solid rgba(55,65,81,0.9);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .price-card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(55,182,177,0.35), var(--shadow);
+    }
+
+    .price-card h3 {
+      margin: 0 0 4px;
+      font-size: 16px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 800;
+      margin: 4px 0 4px;
+      color: var(--accent);
+    }
+
+    .price span {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .price-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .price-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .price-card li {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(148,163,184,0.8);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 20px;
+    }
+
+    .panel {
+      background: #020617;
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid rgba(55,65,81,0.85);
+      box-shadow: var(--shadow);
+      font-size: 14px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin: 6px 0;
+    }
+
+    .mini {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid rgba(31,41,55,0.8);
+      padding: 22px 0 32px;
+      font-size: 12px;
+      color: var(--muted);
+      background: #020617;
+      margin-top: 32px;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px) {
+      .hero-wrap {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .cards {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .timeline {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .pricing-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      nav a { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Inline SVG logo – matches Desert Signal IT feel -->
+        <svg class="logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Desert Signal IT logo">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#37B6B1"/>
+              <stop offset="100%" stop-color="#5C7F68"/>
+            </linearGradient>
+          </defs>
+          <!-- Wi-Fi arcs -->
+          <path d="M8 24a24 24 0 0 1 48 0" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M14 30a18 18 0 0 1 36 0" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M20 36a12 12 0 0 1 24 0" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+          <!-- Mountain & cactus base -->
+          <path d="M6 52h52l-16-10-8 5-6-4-22 9z" fill="#CBAA7E"/>
+          <path d="M40 40c0-2 3-2 3 0v10c0 2-3 2-3 0v-3h-3c-2 0-2-3 0-3h3v-4z" fill="#5C7F68"/>
+        </svg>
+        <h1>Desert Signal IT</h1>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="#difference">Difference</a>
+        <a href="#services">Services</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact" class="cta">Book a visit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            Local IT • Tucson • Vail • Marana • Green Valley
+          </div>
+          <h2>We don’t just <span>fix</span> your tech.<br>We explain it and leave you smarter.</h2>
+          <p class="lead">
+            Desert Signal IT is a different kind of IT startup. Every visit ends with a simple, written <strong>Tech Clarity Report</strong>:
+            what broke, what we did, and how to keep things running smoothly.
+          </p>
+          <div class="hero-actions">
+            <a class="cta" href="tel:+15202611124">Call or Text (520) 261-1124</a>
+            <a class="cta secondary" href="#difference">See how we’re different</a>
+          </div>
+          <p class="hero-mini">Same-week appointments · No contracts · Clear explanations in plain language</p>
+        </div>
+        <aside class="hero-card" aria-label="Example of our Tech Clarity Report">
+          <h3>Example: “Tech Clarity Report” – Home Wi-Fi Fix</h3>
+          <p><strong>What we found:</strong> ISP modem Wi-Fi disabled, mesh system mis-placed, TV streaming over 2.4GHz.</p>
+          <div class="kpi-row">
+            <div class="kpi">
+              <strong>What we did</strong>
+              <span>Re-positioned access points, separated SSIDs, updated router firmware.</span>
+            </div>
+            <div class="kpi">
+              <strong>Next steps for you</strong>
+              <span>Use “Desert-Home-5G” for TVs, run monthly speed test, call us if drops return.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- DIFFERENCE -->
+    <section id="difference">
+      <div class="container">
+        <p class="section-label">What makes us different</p>
+        <h2 class="section-title">The only IT startup that documents and teaches every visit.</h2>
+        <p class="section-sub">
+          Most IT services fix the issue and leave. We leave you with clarity and control.
+        </p>
+
+        <div class="strip">
+          <div class="strip-icon">📋</div>
+          <div class="strip-main">
+            <strong>Every visit includes a “Tech Clarity Report.”</strong>
+            <span>Plain-language notes of what went wrong, what we fixed, and how to prevent it. Great for families and small businesses who never want to feel “in the dark” again.</span>
+          </div>
+          <a href="#contact" class="cta secondary">Ask about a visit</a>
+        </div>
+
+        <div class="cards" style="margin-top:20px">
+          <article class="card">
+            <span class="badge">Teach-as-we-fix</span>
+            <h3>You can ask anything.</h3>
+            <p>We walk you through what we’re doing as we do it. Want us to explain one piece and just “make the rest work”? No problem.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Radical transparency</span>
+            <h3>No mystery, no jargon walls.</h3>
+            <p>We’re happy to show you router settings, backup plans, password managers, and more — without gatekeeping.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Local & human</span>
+            <h3>Southern Arizona first.</h3>
+            <p>We’re built for homes and micro-businesses in Tucson, Vail, Marana, and Green Valley — not giant contracts.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <p class="section-label">Services</p>
+        <h2 class="section-title">Hands-on IT help for real life.</h2>
+        <p class="section-sub">Small jobs welcome. Perfect for homes, home offices, and very small teams.</p>
+
+        <div class="cards">
+          <article class="card">
+            <span class="badge">Wi-Fi & network</span>
+            <h3>Whole-home Wi-Fi & mesh setup</h3>
+            <p>Dead zones, slow streams, dropped calls — we fix coverage, placement, and interference and leave you a map of what changed.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Devices</span>
+            <h3>PC/Mac tune-ups & cleanup</h3>
+            <p>Slow computers, pop-ups, upgrades, and new device setup. You’ll get clear notes about which apps we removed and what we installed.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Security</span>
+            <h3>Practical security & backups</h3>
+            <p>2FA, password managers, backup plans, router hardening — right-sized for your family or business, not overkill.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Remote</span>
+            <h3>Remote support & coaching</h3>
+            <p>Quick fixes via secure session plus recorded notes of what changed, so you can refer back later.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Advisory</span>
+            <h3>Small business IT guidance</h3>
+            <p>Domains, email, shared drives, cloud tools, and vendor translation — we help you make decisions with confidence.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Family & elders</span>
+            <h3>Patient tech help for loved ones</h3>
+            <p>Calm, respectful assistance for parents, grandparents, or anyone who wants a slower pace and written steps.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <div class="container">
+        <p class="section-label">How it works</p>
+        <h2 class="section-title">Simple process. No mystery.</h2>
+        <p class="section-sub">Here’s exactly what happens when you book Desert Signal IT.</p>
+
+        <div class="timeline">
+          <div class="step">
+            <span>1</span>
+            <strong>Tell us what’s going on.</strong>
+            Short call, text, or email. We’ll ask a few targeted questions and give a rough expectation up front.
+          </div>
+          <div class="step">
+            <span>2</span>
+            <strong>We fix & explain.</strong>
+            On-site or remote, we troubleshoot, stabilize, and improve. You can watch and ask questions, or just let us work.
+          </div>
+          <div class="step">
+            <span>3</span>
+            <strong>You get your Tech Clarity Report.</strong>
+            Before we leave, you get a simple summary in writing — perfect for your records and future visits.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="container">
+        <p class="section-label">Pricing</p>
+        <h2 class="section-title">Straightforward rates. No surprises.</h2>
+        <p class="section-sub">Every visit includes your Tech Clarity Report at no extra charge.</p>
+
+        <div class="pricing-row">
+          <article class="price-card">
+            <h3>Home Visit</h3>
+            <p class="price">$30 <span>/ hour</span></p>
+            <p class="price-note">Wi-Fi, PCs, smart devices, backups, basic security.</p>
+            <ul>
+              <li><span class="dot"></span>1-hour minimum</li>
+              <li><span class="dot"></span>Same-week scheduling when available</li>
+              <li><span class="dot"></span>Includes Tech Clarity Report</li>
+            </ul>
+          </article>
+
+          <article class="price-card featured">
+            <h3>Small Business</h3>
+            <p class="price">$55 <span>/ hour</span></p>
+            <p class="price-note">Offices, shops, home-based businesses.</p>
+            <ul>
+              <li><span class="dot"></span>Networking, shared drives, email, remote work</li>
+              <li><span class="dot"></span>Security & backup recommendations</li>
+              <li><span class="dot"></span>Ideal for 1–10 people</li>
+            </ul>
+          </article>
+
+          <article class="price-card">
+            <h3>Virtual Session</h3>
+            <p class="price">$20 <span>/ 30 min</span></p>
+            <p class="price-note">Perfect for quick fixes or guided learning.</p>
+            <ul>
+              <li><span class="dot"></span>Zoom, Teams, Discord, or your preference</li>
+              <li><span class="dot"></span>Recorded notes of changes made</li>
+              <li><span class="dot"></span>Extendable in 30-minute blocks</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Ready when you are.</h2>
+        <p class="section-sub">Tell us what you’re dealing with and we’ll respond as soon as possible.</p>
+
+        <div class="contact-grid">
+          <div class="panel">
+            <h3>Call, text, or email</h3>
+            <p><strong>Phone:</strong> <a href="tel:+15202611124">(520) 261-1124</a></p>
+            <p><strong>Email:</strong> <a href="mailto:ray@desertsignal.tech">ray@desertsignal.tech</a></p>
+            <p><strong>Service area:</strong> Tucson, Vail, Marana, Green Valley, Corona de Tucson, Rita Ranch</p>
+            <p class="mini">Typical hours: Mon–Fri, by appointment · Virtual sessions may be available outside normal hours.</p>
+
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+              <a class="cta" href="tel:+15202611124">Call or Text Now</a>
+              <a class="cta secondary" href="mailto:ray@desertsignal.tech?subject=Support%20Request&body=Name:%0D%0AStreet%20Area:%0D%0AIssue%20you%27re%20seeing:%0D%0APreferred%20days/times:%0D%0A">Start an email</a>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Fast request template</h3>
+            <p class="mini">
+              Copy, paste, and fill in the blanks:
+            </p>
+<pre class="mini" style="white-space:pre-wrap;background:#020617;border-radius:12px;border:1px solid #1f2937;padding:10px;">
+Name:
+Neighborhood (e.g., Rita Ranch, Vail):
+Best contact (phone/email):
+What’s going wrong:
+When did it start:
+Any kids / remote workers relying on this:
+</pre>
+            <p class="mini">
+              Send that to <strong>ray@desertsignal.tech</strong> and we’ll have everything we need to start helping.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Desert Signal IT · Tucson, Arizona</span>
+      <span>Fix it. Explain it. Empower you.</span>
+    </div>
+  </footer>
+
+  <!-- LocalBusiness JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Desert Signal IT",
+    "image": "https://desertsignal.tech/og-image.jpg",
+    "url": "https://desertsignal.tech",
+    "telephone": "+1-520-261-1124",
+    "areaServed": ["Tucson","Vail","Marana","Green Valley","Corona de Tucson","Rita Ranch"],
+    "description": "Tucson-based IT startup that fixes your tech, explains what happened, and leaves you with a clear Tech Clarity Report after every visit.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tucson",
+      "addressRegion": "AZ",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
