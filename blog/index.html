@@ -1,9 +1,207 @@
-<h1>Desert Signal IT Blog</h1>
-<p>Helpful tech support tips, how-tos, and guides for Tucson, Vail, Rita Ranch, and Southern Arizona.</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog • Desert Signal IT</title>
+  <meta name="description" content="Desert Signal IT blog – simple guides, tips, and troubleshooting stories for Tucson-area families and small businesses." />
+  <meta name="theme-color" content="#214247" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#22313A;
+      --ink-2:#4E6169;
+      --paper:#FAF8F5;
+      --sand:#CBAA7E;
+      --turq:#37B6B1;
+      --cactus:#5C7F68;
+      --brown:#6C4C34;
+      --card:#FFFFFF;
+      --ring:rgba(34,49,58,.12);
+      --shadow:0 18px 45px rgba(0,0,0,.10);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+    }
+    a{color:var(--turq);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1200px;margin:0 auto;padding:0 22px}
+    header{
+      position:sticky;top:0;
+      background:rgba(250,248,245,.96);
+      backdrop-filter:saturate(180%) blur(8px);
+      border-bottom:1px solid var(--ring);
+      z-index:30;
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:40px;height:40px}
+    .brand h1{font-size:18px;letter-spacing:.3px;margin:0}
+    nav a{margin-left:20px;color:var(--ink-2);font-weight:600;font-size:14px}
+    nav a.current{color:var(--ink);border-bottom:2px solid var(--turq);padding-bottom:2px}
+    .cta{
+      display:inline-flex;align-items:center;gap:10px;
+      background:var(--turq);color:#083336;
+      padding:10px 16px;border-radius:12px;
+      font-weight:700;box-shadow:var(--shadow);
+    }
+    main{padding-bottom:40px}
+    .hero-blog{
+      padding:64px 0 34px;
+      background:linear-gradient(180deg, rgba(55,182,177,.08), transparent 70%);
+    }
+    .hero-blog h2{
+      font-size:36px;margin:0 0 8px;
+    }
+    .hero-blog p{
+      margin:0;
+      font-size:16px;
+      color:var(--ink-2);
+      max-width:640px;
+    }
+    .tagline{font-size:13px;color:var(--ink-2);margin-top:8px}
+    .section-title{font-size:24px;margin:0 0 8px}
+    .section-sub{color:var(--ink-2);margin:0 0 24px}
+    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .post-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      border:1px solid var(--ring);
+      box-shadow:var(--shadow);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .post-meta{
+      font-size:12px;
+      color:var(--ink-2);
+      margin-bottom:6px;
+    }
+    .post-card h3{
+      margin:0 0 8px;
+      font-size:18px;
+    }
+    .post-card p{
+      margin:0 0 12px;
+      font-size:14px;
+      color:var(--ink-2);
+    }
+    .chip{
+      display:inline-block;
+      padding:3px 8px;
+      border-radius:999px;
+      background:rgba(203,170,126,.2);
+      color:#6b4f2d;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .read-more{
+      font-size:13px;
+      font-weight:600;
+      color:var(--turq);
+    }
+    footer{
+      padding:36px 0 48px;
+      color:var(--ink-2);
+      border-top:1px solid var(--ring);
+      margin-top:40px;
+    }
+    @media (max-width: 980px){
+      .posts{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="/desertsignal-logo.png" alt="Desert Signal IT logo" class="logo">
+        <h1>Desert Signal IT</h1>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/#services">Services</a>
+        <a href="/#compare">Why Us</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#areas">Areas</a>
+        <a href="/blog" class="current">Blog</a>
+        <a href="/#contact" class="cta">Book Now</a>
+      </nav>
+    </div>
+  </header>
 
-<ul>
-  <li><a href="2025-01-Intro-To-Desert-Signal.html">Welcome to the Desert Signal IT Blog</a></li>
-  <li><a href="2025-01-Wifi-Speed-Tips.html">5 Ways to Improve WiFi Speed in Tucson Homes</a></li>
-  <li><a href="2025-01-Scam-Protection.html">How to Avoid Tech Support Scams in Arizona</a></li>
-</ul>
+  <main>
+    <!-- BLOG HERO -->
+    <section class="hero-blog">
+      <div class="container">
+        <h2>Desert Signal IT Blog</h2>
+        <p>Simple, real-world tech tips for Southern Arizona homes and small businesses. No jargon, no drama — just clear guides and stories from the field.</p>
+        <p class="tagline">Topics: Wi-Fi, home networking, security basics, backups, and how to keep your devices running smoothly.</p>
+      </div>
+    </section>
 
+    <!-- POSTS GRID -->
+    <section>
+      <div class="container">
+        <h3 class="section-title">Latest posts</h3>
+        <p class="section-sub">Start with these foundational guides. You can always call or text if you’d rather have us do it with you.</p>
+
+        <div class="posts">
+          <!-- POST 1 -->
+          <article class="post-card">
+            <div>
+              <div class="post-meta">Wi-Fi • Beginner • 5 min read</div>
+              <h3>Why Your Wi-Fi Dies in the Bedroom (and What to Do About It)</h3>
+              <p>Dead zones, thick walls, and confused router placement are the usual suspects. Here’s a plain-language guide to getting coverage in the rooms that actually matter.</p>
+            </div>
+            <a class="read-more" href="#">Read article →</a>
+          </article>
+
+          <!-- POST 2 -->
+          <article class="post-card">
+            <div>
+              <div class="post-meta">Security • Family • 4 min read</div>
+              <h3>3 Simple Ways to Make Your Family’s Devices Safer This Weekend</h3>
+              <p>You don’t need to be a security expert. Turn on updates, use a password manager, and enable 2FA on the accounts that matter most.</p>
+            </div>
+            <a class="read-more" href="#">Read article →</a>
+          </article>
+
+          <!-- POST 3 -->
+          <article class="post-card">
+            <div>
+              <div class="post-meta">Backup • Small Business • 6 min read</div>
+              <h3>“If This Laptop Died Tomorrow, Then What?” A Backup Plan for Real Life.</h3>
+              <p>A simple backup plan for solo business owners and small teams that doesn’t require an IT department or expensive tools.</p>
+            </div>
+            <span class="chip">Coming soon</span>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+      <span>© <span id="year"></span> Desert Signal IT · Tucson, Arizona</span>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <a href="/blog" class="muted">Blog</a>
+        <span class="muted">Stress free solutions. Easy and helpful guides. Local Tucson start-up.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body>
+</html>
