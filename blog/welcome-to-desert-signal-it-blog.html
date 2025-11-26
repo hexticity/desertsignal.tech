@@ -41,7 +41,9 @@
     a{color:var(--turq);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1200px;margin:0 auto;padding:0 22px}
+    .muted{color:var(--ink-2);}
 
+    /* Header with mobile nav */
     header{
       position:sticky;top:0;
       background:rgba(250,248,245,.96);
@@ -56,13 +58,46 @@
     .brand{display:flex;align-items:center;gap:14px}
     .logo{width:40px;height:40px}
     .brand h1{font-size:18px;letter-spacing:.3px;margin:0}
-    nav a{margin-left:20px;color:var(--ink-2);font-weight:600;font-size:14px}
-    nav a.current{color:var(--ink);border-bottom:2px solid var(--turq);padding-bottom:2px}
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+    .nav-links a{
+      color:var(--ink-2);
+      font-weight:600;
+      font-size:14px;
+    }
+    .nav-links a.current{
+      color:var(--ink);
+      border-bottom:2px solid var(--turq);
+      padding-bottom:2px;
+    }
     .cta{
       display:inline-flex;align-items:center;gap:10px;
       background:var(--turq);color:#083336;
       padding:10px 16px;border-radius:12px;
       font-weight:700;box-shadow:var(--shadow);
+    }
+
+    /* Hamburger button */
+    .menu-toggle{
+      display:none;
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      padding:6px;
+      border-radius:999px;
+    }
+    .menu-line{
+      display:block;
+      width:22px;
+      height:2px;
+      background:var(--ink);
+      border-radius:999px;
+      margin:4px 0;
+      transition:transform .2s ease, opacity .2s ease, background-color .2s ease;
     }
 
     main{padding:52px 0 40px;}
@@ -106,11 +141,67 @@
       gap:12px;flex-wrap:wrap;align-items:center;
     }
 
+    /* Responsive */
     @media (max-width: 980px){
-      .nav{flex-wrap:wrap;gap:10px;height:auto;padding-top:10px;padding-bottom:10px;}
-      nav a{margin-left:12px;}
+      .nav{
+        flex-wrap:nowrap;
+        gap:10px;
+        height:auto;
+        padding-top:10px;
+        padding-bottom:10px;
+      }
+
+      .menu-toggle{
+        display:inline-flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:72px;
+        left:0;
+        right:0;
+        background:rgba(250,248,245,.98);
+        border-bottom:1px solid var(--ring);
+        box-shadow:0 18px 30px rgba(0,0,0,.12);
+        flex-direction:column;
+        align-items:flex-start;
+        padding:0 22px;
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .24s ease-out;
+      }
+
+      .nav-links a{
+        padding:10px 0;
+        width:100%;
+      }
+
+      .nav-links .cta{
+        justify-content:center;
+        margin:6px 0 12px;
+        width:100%;
+        text-align:center;
+      }
+
+      body.nav-open .nav-links{
+        max-height:320px;
+      }
+      body.nav-open .menu-line:nth-child(1){
+        transform:translateY(6px) rotate(45deg);
+      }
+      body.nav-open .menu-line:nth-child(2){
+        opacity:0;
+      }
+      body.nav-open .menu-line:nth-child(3){
+        transform:translateY(-6px) rotate(-45deg);
+      }
+
       .blog-container{padding:0 16px;}
       article{padding:18px 16px 22px;}
+      .article-header h1{font-size:26px;}
     }
   </style>
 </head>
@@ -121,7 +212,16 @@
         <img src="/desertsignal-logo.png" alt="Desert Signal IT logo" class="logo">
         <h1>Desert Signal IT</h1>
       </div>
-      <nav aria-label="Main navigation">
+
+      <!-- Mobile menu button -->
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+
+      <!-- Main navigation -->
+      <nav id="primary-nav" class="nav-links" aria-label="Main navigation">
         <a href="/">Home</a>
         <a href="/#services">Services</a>
         <a href="/#compare">Why Us</a>
@@ -239,6 +339,29 @@
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    (function(){
+      const toggle = document.querySelector('.menu-toggle');
+      const body = document.body;
+      const nav = document.getElementById('primary-nav');
+
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function(){
+        const isOpen = body.classList.toggle('nav-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      nav.addEventListener('click', function(e){
+        if (e.target.tagName === 'A'){
+          body.classList.remove('nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
